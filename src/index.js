@@ -1,19 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import configureStore from './store/configureStore';
+import reportWebVitals from './reportWebVitals';
+import './index.css';
+import 'react-toastify/dist/ReactToastify.css';
 
-const root = document.getElementById('root');
 
-ReactDOM.createRoot(root).render(
-  <React.StrictMode>
+const store = configureStore();
+
+ReactDOM.render(
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
+  </Provider>,
+  document.getElementById('root')
 );
 
-// Performans ölçümü yapmak için kullanılabilir
 reportWebVitals();

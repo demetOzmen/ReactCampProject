@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import CartSummary from "./CartSummary";
 import { Button, Container, Menu } from "semantic-ui-react";
 import SignedOut from "./SignedOut";
+import SignedIn from "./SignedIn";
+
 import {useHistory, useNavigate} from "react-router-dom"
 
 export default function Navi() {
@@ -25,7 +27,7 @@ export default function Navi() {
 
           <Menu.Menu position="right">
             <CartSummary />
-            {isAuthenticated?<signedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}              
+            {isAuthenticated?<SignedIn signOut={handleSignOut}/>:<SignedOut signIn={handleSignIn}/>}              
               
           </Menu.Menu>
         </Container>
