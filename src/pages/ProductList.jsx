@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Label, Menu, Table } from "semantic-ui-react";
+import { Icon, Menu, Table } from "semantic-ui-react";
 import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import {addToCart} from "../store/actions/cartActions"
+import {toast} from "react-toastify"
+import { Button } from 'semantic-ui-react';
+
 
 export default function ProductList() {
 
@@ -16,7 +19,8 @@ export default function ProductList() {
   }, []);
 
   const handleAddToCart=(product)=>{
-    dispatch(addToCart(product))
+    dispatch(addToCart(product));
+    toast.success(`${product.productName}sepete eklendi!`)
   }
   return (
     <div>
@@ -44,8 +48,10 @@ export default function ProductList() {
               <Table.Cell>{product.unitPrice}</Table.Cell>
               <Table.Cell>{product.unitsInStock}</Table.Cell>
               <Table.Cell>{product.QuantityPerUnit}</Table.Cell>
-              <Table.Cell>{product.category.categoryName}</Table.Cell>
-              <Table.Cell><button onClick={handleAddToCart(product)}>Sepete Ekle</button> </Table.Cell>
+              {/*<Table.Cell>{product.category.categoryId}</Table.Cell>*/}
+              <Table.Cell>
+                <Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button>
+               </Table.Cell>
 
             </Table.Row>
           ))}
