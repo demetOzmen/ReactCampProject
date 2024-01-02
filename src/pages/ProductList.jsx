@@ -4,7 +4,7 @@ import ProductService from "../services/productService";
 import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import {addToCart} from "../store/actions/cartActions"
-import {toast} from "react-toastify"
+//import {toast} from "react-toastify"
 import { Button } from 'semantic-ui-react';
 
 
@@ -20,7 +20,7 @@ export default function ProductList() {
 
   const handleAddToCart=(product)=>{
     dispatch(addToCart(product));
-    toast.success(`${product.productName}sepete eklendi!`)
+    //toast.success(`${product.productName}sepete eklendi!`)
   }
   return (
     <div>
@@ -39,9 +39,9 @@ export default function ProductList() {
 
         <Table.Body>
           {products.map((product) => (
-            <Table.Row key={product.id}>
+            <Table.Row key={product.productId}>
               <Table.Cell>
-                <Link to={`/products/${products.productId}`}>
+                <Link to={`/products/${products.productName}`}>
                   {product.productName}
                 </Link>
               </Table.Cell>

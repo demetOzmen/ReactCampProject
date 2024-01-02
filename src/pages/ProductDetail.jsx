@@ -10,7 +10,7 @@ export default function ProductDetail() {
 
   useEffect(() => {
     let productService = new ProductService()
-    productService.getByProductName(name).then(result=>setProduct(result.data.data))
+    productService.getById(product.productId).then(result=>setProduct(result.data.data))
   },[])
 
   return (
@@ -23,7 +23,7 @@ export default function ProductDetail() {
               size="mini"
               src="/images/avatar/large/steve.jpg"
             />
-            <Card.Header>{product.producName}</Card.Header>
+            <Card.Header>{product.producId}</Card.Header>
             {/*<Card.Meta>{product.category.categoryId}</Card.Meta>*/}
             <Card.Description>
               Steve wants to add you to the group <strong>best friends</strong>
